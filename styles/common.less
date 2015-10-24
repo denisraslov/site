@@ -1,0 +1,180 @@
+/* fonts */
+@import "./../fonts/font.css";
+/* icons */
+@import "./../font-awesome-icons/css/font-awesome.css";
+
+/*---------------------- common -----------------------*/
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    background-color: #fff;
+    color: rgb(71, 71, 71);
+    font-size: 22px;
+    line-height: 30px;
+    font-family: 'SourceSansPro', Helvetica, Arial, sans-serif;
+}
+
+div, a {
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.header,
+.title {
+    display: block;
+    color: rgb(117, 117, 117);
+}
+
+.header {
+    font-size: 30px;
+    line-height: 50px;
+    margin-bottom: 44px;
+    text-align: center;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.button {
+    display: inline-block;
+    padding: 16px;
+    border-width: 3px;
+    border-style: solid;
+    transition: all 0.5s;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none !important;
+    border-color: #01a093;
+    background-color: rgb(228, 244, 243);
+    color: #01a093;
+
+    &:hover {
+        border-color: rgb(117, 117, 117);
+        background-color: rgb(117, 117, 117);
+        color: #fff;
+    }
+
+    .fa {
+        margin-left: 7px;
+    }
+}
+
+.row {
+    margin: 0 -15px;
+}
+
+.row::before,
+.row::after {
+    clear: both;
+    display: table;
+    content: " "
+}
+
+.row > div {
+    display: inline-block;
+    float: left;
+    padding: 0 15px;
+}
+
+.section {
+    min-height: 100%;
+    position: relative;
+}
+
+.button_round {
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    background-color: #01a093;
+    color: #ffffff;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0,0.4);
+    position: fixed;
+    border: none;
+    font-size: 25px;
+    padding: 15px;
+    outline: none;
+    z-index: 100;
+    text-align: center;
+    opacity: 0.7;
+    line-height: 34px;
+    transition: all 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &:hover {
+        opacity: 1;
+        box-shadow: 0 3px 10px 0 rgba(0,0,0,0.6);
+    }
+}
+
+.button_to {
+    right: 30px;
+    bottom: 30px;
+
+    span {
+        display: none;
+        text-transform: uppercase;
+        vertical-align: middle;
+        font-size: 17px;
+        margin-right: 6px;
+    }
+}
+
+.home,
+.portfolio,
+.contacts {
+    background-color: rgb(228, 244, 243);
+}
+
+@keyframes roll {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(340deg);
+    }
+}
+
+.animated-roll {
+    animation: roll 0.3s;
+}
+
+.animated-roll-fast {
+    animation: roll 0.1s;
+}
+
+.mfp-content {
+    height: 100%;
+}
+
+/*------------------ bx slider ------------------*/
+
+.bx-wrapper {
+    margin: 0 auto 40px !important;
+
+    .bx-viewport {
+        left: auto !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .bx-pager {
+        margin-bottom: 10px;
+        z-index: 100;
+    }
+}

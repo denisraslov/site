@@ -1,0 +1,87 @@
+
+.contacts {
+    padding: 30px 105px 50px;
+
+    .contacts__socialLinks {
+        text-align: center;
+        position: relative;
+
+        .contacts__socialLink {
+            opacity: 0;
+            display: inline-block;
+            box-sizing: border-box;
+            cursor: pointer;
+            font-size: 40px;
+            color: #fff;
+            padding: 14px;
+            width: 72px;
+            height: 72px;
+            line-height: 45px;
+            border-radius: 50%;
+            background-color: #41969c;
+            text-align: center;
+            opacity: 0.8;
+            transition: all 0.3s;
+
+            &:not(:first-child) {
+                margin-left: 38px;
+            }
+
+            .fa {
+                transform: rotate(20deg);
+            }
+
+            &:hover {
+                opacity: 1;
+                box-shadow: 0 3px 10px 0 rgba(0,0,0,0.6);
+                animation: roll 0.5s;
+                background-color: #018279;
+                transform: rotate(340deg);
+            }
+        }
+    }
+
+    .contacts__formWrap.visible {
+        opacity: 1;
+    }
+
+    .contacts__formWrap {
+        margin-top: 60px;
+        text-align: center;
+        opacity: 0;
+        transition: all 1.5s;
+
+        .contacts__form {
+            display: inline-block;
+            width: 600px;
+
+            input, textarea {
+                display: block;
+                width: 100%;
+                border: 2px solid #ABD3CC;
+                outline: none;
+                padding: 10px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                font-family: 'SourceSansPro', Helvetica, Arial, sans-serif;
+                font-size: 18px;
+                transition: all 0.3s;
+                box-sizing: border-box;
+                resize: none;
+
+                &:focus {
+                    border-color: #87A5A0;
+                }
+            }
+
+            textarea {
+                height: 130px;
+            }
+
+            .contants__sendMessage {
+                width: 200px;
+                margin-top: 20px;
+            }
+        }
+    }
+}

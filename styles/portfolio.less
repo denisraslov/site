@@ -1,0 +1,173 @@
+
+.portfolio {
+    padding: 40px 105px 80px;
+
+    .project {
+        transition: all 0.5s;
+        text-align: center;
+        border: 1px solid #ddd;
+        padding-top: 30px;
+        height: 386px;
+        background-color: #fff;
+        cursor: pointer;
+
+        &:hover {
+            transform: translate(0, -8px);
+            border: 1px solid #bbb;
+
+            .project__name::after {
+                width: 180px;
+                border-color: #cc90ff;
+            }
+
+            .project__name {
+                font-size: 31px;
+            }
+        }
+
+        .project__img {
+            height: 100px;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project__name {
+            transition: all 0.5s;
+            font-size: 30px;
+            color: #353535;
+            padding: 30px 0 0 0;
+        }
+
+        .project__name::after {
+            transition: all 0.5s;
+            content: " ";
+            border: solid 2px #3dc9b3;
+            display: block;
+            width: 125px;
+            margin: 25px auto;
+        }
+
+        .project__descr {
+            font-size: 16px;
+            padding: 10px 20px 40px;
+        }
+    }
+}
+
+
+//------------------ popup ---------------------
+
+.projectPopup {
+  position: relative;
+  background: #FFF;
+  padding: 25px;
+  width: ~"calc(100% - 100px)";
+  height: ~"calc(100% - 60px)";
+  margin: 30px auto 0;
+  border-radius: 3px;
+  overflow-y: scroll;
+
+  .projectPopup__header {
+      margin-bottom: 10px;
+      margin-left: 23px;
+
+      a {
+          display: inline-block;
+        color: inherit;
+        margin-top: -10px;
+        margin-left: 18px;
+        font-size: 17px;
+        vertical-align: middle;
+        transition: all 0.2s;
+
+        .fa {
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        &:hover {
+            color: #cc90ff !important;
+        }
+      }
+
+
+        .projectPopup__title {
+            display: inline-block;
+            color: #01a093;
+            font-size: 36px;
+        }
+
+        .projectPopup__screensWrap {
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        .popup__buttonLink {
+             padding: 4px 30px;
+             border-width: 2px;
+        }
+
+        .projectPopup__descr {
+            font-size: 16px;
+
+            ul {
+                margin: 10px 0 10px 20px;
+            }
+        }
+
+        .projectPopup__tags {
+            margin-top: 10px;
+
+            & > div {
+                display: inline-block;
+                font-size: 14px;
+                color: #fff;
+                border-radius: 2px;
+                background-color: #3c969d;
+                padding: 0px 8px;
+                margin-right: 4px;
+                margin-bottom: 2px;
+            }
+        }
+
+        .projectPopup__respTitle {
+            margin: 30px 0 0 0;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+      }
+  }
+
+.mfp-project {
+    z-index: 10001 !important;
+  // before-open state
+  .mfp-content,
+  &.mfp-bg {
+    opacity: 0;
+    transition: opacity .3s ease-out;
+  }
+  // open state
+  &.mfp-ready {
+    .mfp-content {
+     opacity: 1;
+    }
+    &.mfp-bg {
+      opacity: 0.8; // background opacity
+    }
+  }
+
+    // closed state
+    &.mfp-removing {
+        .mfp-content {
+            opacity: 0;
+        }
+
+        &.mfp-bg {
+          opacity: 0;
+        }
+    }
+}

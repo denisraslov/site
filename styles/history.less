@@ -1,0 +1,96 @@
+
+.history {
+    padding: 40px 105px 80px;
+    text-align: center;
+
+    .history__items {
+        position: relative;
+        display: inline-block;
+        width: 700px;
+        text-align: left;
+        border-left: 3px solid #41969c;
+
+        &::before,
+        &::after
+         {
+            content: " ";
+            position: absolute;
+            height: 12px;
+            width: 12px;
+            background-color: #41969c;
+            border-radius: 50%;
+            left: -7px;
+        }
+
+        &::before {
+            top: -10px;
+        }
+
+        &::after {
+            bottom: -10px;
+        }
+    }
+
+    .historyItem:not(:last-child) {
+        margin-bottom: 50px;
+    }
+
+    .historyItem__lineLeft,
+    .historyItem__lineRight {
+        position: relative;
+        border-top: 2px solid #41969c;
+        margin-top: 6px;
+    }
+
+    .historyItem__icon {
+        position: absolute;
+        height: 40px;
+        width: 40px;
+        font-size: 18px;
+        text-align: center;
+        background-color: #41969c;
+        border-radius: 50%;
+        color: #fff;
+    }
+
+    .historyItem__lineLeft .historyItem__icon {
+        top: -20px;
+        left: -29px;
+    }
+
+    .historyItem__lineRight .historyItem__icon {
+        top: -20px;
+        right: -29px;
+    }
+
+    .historyItem__dates {
+        font-size: 17px;
+        padding: 0 28px;
+        color: #a1a1a1;
+    }
+
+    .historyItem__position {
+        padding: 17px 28px 0;
+        color: #161616;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .historyItem__name {
+        padding: 2px 28px 16px;
+        font-size: 17px;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .historyItem__descr {
+        padding: 0 50px 10px;
+        font-size: 16px;
+
+        li {
+            line-height: 28px;
+        }
+    }
+}

@@ -3,8 +3,6 @@ $(document).ready(function() {
     var $homeMoreButton = $('.home__moreButton'),
         $toButton = $('.button_to');
 
-    $toButton.hide();
-
     var animate = function($el, animationClass, callback) {
         animationClass = animationClass || 'animated bounce';
 
@@ -104,7 +102,10 @@ $(document).ready(function() {
         contacts: $('.contacts').offset().top
     };
 
-    $(document).on('scroll', function(e) {
+    var checkScrollPosition = function() {
+        var scrollTopPosition = $(document).scrollTop(),
+            scrollBottomPosition = scrollTopPosition + $(window).height();
+
         /*
         if ($(document).scrollTop() >= offsets.skills) {
             $('.skills')
@@ -114,7 +115,7 @@ $(document).ready(function() {
 
         if (!skipToButtonOnScroll) {
 
-            if ($(document).scrollTop() < offsets.skills) {
+            if (scrollTopPosition < offsets.skills) {
                 $toButton.hide();
             } else {
                 $toButton.show();
@@ -122,12 +123,13 @@ $(document).ready(function() {
 
         }
 
-        var $socialLinks = $('.contacts__socialLink');
+        var $socialLinks = $('.contacts__socialLink'),
+            $contactsFormWrap = $('.contacts__formWrap');
 
-        if (($(document).scrollTop() + $(window).height() - 100) < $socialLinks.offset().top) {
+        if (scrollBottomPosition >= ($contactsFormWrap.offset().top - 100)) {
 
-            if (!$socialLinks.visible) {
-                $socialLinks.visible = true;
+            if (!$socialLinks[0].visible) {
+                $socialLinks[0].visible = true;
                 $socialLinks.css('opacity', 0);
 
                 var animateIcon = function(index) {
@@ -138,16 +140,26 @@ $(document).ready(function() {
                                 animateIcon(index - 1);
                             }, index < $socialLinks.length - 1 ? 100 : 0);
                         }
+                        if (index == 0) {
+                            setTimeout(function() {
+                                $contactsFormWrap.addClass('visible');
+                                $contactsFormWrap.find('input:first').focus();
+                            }, 500);
+                        }
                     };
 
                 animateIcon($socialLinks.length - 1);
             }
-        } else {
-            $socialLinks.visible = false;
+        }
+
+        if (scrollBottomPosition < $socialLinks.offset().top) {
+            $socialLinks[0].visible = false;
+            $socialLinks.css('opacity', 0);
+            $contactsFormWrap.removeClass('visible');
         }
 
         //bottom of document
-        if ($(document).scrollTop() == $(document).height() - $(window).height()) {
+        if (scrollBottomPosition == $(document).height()) {
 
             $toButton.data('up', '1');
 
@@ -167,22 +179,41 @@ $(document).ready(function() {
 
             animate($toButton, 'animated-roll');
         }
+    };
+
+    checkScrollPosition();
+
+    $(document).on('scroll', function(e) {
+        checkScrollPosition();
     });
 
     $('.open-popup-link').magnificPopup({
           type: 'inline',
           midClick: true,
-          mainClass: 'mfp-with-fade',
-          removalDelay: 300, //delay removal by X to allow out-animation
+          mainClass: 'mfp-project',
+          removalDelay: 300,
           callbacks: {
-              beforeOpen: function() {},
+              beforeOpen: function() {
+                  $toButton.hide();
+                  $('.button_menu').hide();
+              },
               open: function() {
                   this.slider = $('.projectPopup__screens', this.content).bxSlider({
                       mode: 'fade'
                   });
+
+                  $toButton
+                      .show()
+                      .css('opacity', 0);
+
+                  $('.button_menu')
+                      .show()
+                      .css('opacity', 0);
               },
               afterClose: function() {
                   this.slider.destroySlider();
+                  $toButton.css('opacity', 1);
+                  $('.button_menu').css('opacity', 1);
               }
          }
     });
@@ -202,7 +233,6 @@ $(document).ready(function() {
           showCloseBtn: false,
           callbacks: {
               beforeOpen: function() {
-
                   $toButton.hide();
 
                   animate($('.button_menu'), 'animated-roll');
@@ -233,8 +263,7 @@ $(document).ready(function() {
               afterClose: function() {
                   isMenuOpened = false;
 
-                  $toButton
-                      .css('opacity', 1);
+                  $toButton.css('opacity', 1);
               }
          }
     });

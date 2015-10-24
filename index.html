@@ -8,7 +8,7 @@
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="vendor/animate.css">
     <link rel="stylesheet" href="vendor/jquery.bxslider/jquery.bxslider.css">
     <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
@@ -146,7 +146,7 @@
             </div>
 
             <div style="width: 33%;">
-                <div class="project">
+                <div href="#popup_neemble" class="project open-popup-link">
 
                     <div class="project__img" style="background-image: url('http://neemble.ru/dist/media/images/logo_black.png');">
                     </div>
@@ -178,7 +178,10 @@
         </div>
 
         <div id="popup_crocotime" class="projectPopup mfp-hide mfp-with-anim">
-              <div class="projectPopup__title">CrocoTime</div>
+            <div class="projectPopup__header">
+                <div class="projectPopup__title">CrocoTime</div>
+                <a target="_blank" href="https://demo.crocotime.com">Go to demo&nbsp;&nbsp;<i class="fa fa-external-link"></i></a>
+            </div>
               <div class="row">
                   <div style="width: 60%;" class="projectPopup__screensWrap">
 
@@ -190,9 +193,6 @@
                             <li><img src="img/projects/crocotime/5.png" /></li>
                       </ul>
 
-                      <a href="http://demo.crocotime.com" target="_blank" class="button popup__buttonLink">
-                          <span>Go to demo</span> <i class="fa fa-external-link"></i>
-                      </a>
                   </div>
                   <div style="width: 40%;">
                       <div class="projectPopup__descr">Time tracking system for office and remote employees.
@@ -219,8 +219,56 @@
               </div>
         </div>
 
+        <div id="popup_neemble" class="projectPopup mfp-hide mfp-with-anim">
+                <div class="projectPopup__header">
+                    <div class="projectPopup__title">Neemble ERP</div>
+                    <a target="_blank" href="https://erp.neemble.ru">Go to the site&nbsp;&nbsp;<i class="fa fa-external-link"></i></a>
+              </div>
+              <div class="row">
+                  <div style="width: 60%;" class="projectPopup__screensWrap">
+
+                      <ul class="projectPopup__screens">
+                            <li><img src="img/projects/neemble/covered/1.png" /></li>
+                            <li><img src="img/projects/neemble/covered/2.png" /></li>
+                            <li><img src="img/projects/neemble/covered/3.png" /></li>
+                      </ul>
+
+
+                  </div>
+                  <div style="width: 40%;">
+                      <div class="projectPopup__descr">
+                          The music service for listening to setlists of live shows of bands.
+                          You can listen songs from last band's show or you can
+                          choise any of tours that bands gave for its history and get the average setlist of that.
+                          Service also provide recomendations based on your VK social network profile and
+                          show bands similar to the one you already choosed.
+                      </div>
+                      <div class="projectPopup__tags">
+                          <div>Backbone.js</div>
+                          <div>MVC</div>
+                          <div>LESS</div>
+                          <div>Gulp</div>
+                          <div>REST</div>
+                      </div>
+
+                      <div class="projectPopup__respTitle">What did I...</div>
+                      <div class="projectPopup__descr">
+                          <ul>
+                              <li>made the service from scratch (the idea, the design, the programming)</li>
+                              <li>made MVC framework based on Backbone.js</li>
+                              <li>made integration with API of 3 another services</li>
+                              <li>build the project with Grunt</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+        </div>
+
         <div id="popup_lastshow" class="projectPopup mfp-hide mfp-with-anim">
-              <div class="projectPopup__title">LastShow</div>
+                <div class="projectPopup__header">
+                    <div class="projectPopup__title">LastShow</div>
+                    <a target="_blank" href="https://lastshow.net">Go to the site&nbsp;&nbsp;<i class="fa fa-external-link"></i></a>
+              </div>
               <div class="row">
                   <div style="width: 60%;" class="projectPopup__screensWrap">
 
@@ -231,9 +279,6 @@
                             <li><img src="img/projects/lastshow/4.jpg" /></li>
                       </ul>
 
-                      <a href="http://lastshow.net" target="_blank" class="button popup__buttonLink">
-                          <span>Go to site</span> <i class="fa fa-external-link"></i>
-                      </a>
                   </div>
                   <div style="width: 40%;">
                       <div class="projectPopup__descr">
@@ -273,93 +318,85 @@
         </div>
 
         <div class="history__items">
-            <div class="history__itemsLine"></div>
-            <div class="historyItem row">
-                <div style="width: 50%;">&nbsp;</div>
-                <div style="width: 50%; padding: 0;">
-                    <div class="historyItem__dates">2015 - now</div>
-                    <div class="historyItem__lineRight">
-                        <div class="historyItem__icon" style="line-height:41px;"><i class="fa fa-desktop"></i></div>
-                    </div>
-                    <div class="historyItem__position">Senior front end developer / Team lead</div>
-                    <div class="historyItem__name">
-                        <a href="http://neemble.ru" target="_blank">Neemble</a>
-                    </div>
-                    <div class="historyItem__descr">
-                        <ul>
-                            <li>Agile development (Scrum)</li>
-                            <li>MVC framework based on Backbone.js</li>
-                            <li>Require.js modules</li>
-                            <li>Grunt / Gulp</li>
-                            <li>BEM, LESS</li>
-                            <li>Responsive development</li>
-                            <li>REST</li>
-                            <li>Team leading</li>
-                        </ul>
-                    </div>
+
+            <div class="historyItem">
+                <div class="historyItem__dates">2015 - now</div>
+                <div class="historyItem__lineRight">
+                    <div class="historyItem__icon" style="line-height:41px;"><i class="fa fa-desktop"></i></div>
+                </div>
+                <div class="historyItem__position">Senior front end developer / Team lead</div>
+                <div class="historyItem__name">
+                    <a href="http://neemble.ru" target="_blank">Neemble</a>
+                </div>
+                <div class="historyItem__descr">
+                    <ul>
+                        <li>Agile development (Scrum)</li>
+                        <li>MVC framework based on Backbone.js</li>
+                        <li>Require.js modules</li>
+                        <li>Grunt / Gulp</li>
+                        <li>BEM, LESS</li>
+                        <li>Responsive development</li>
+                        <li>REST</li>
+                        <li>Team leading</li>
+                    </ul>
                 </div>
             </div>
-            <div class="historyItem row">
-                <div style="width: 50%;">&nbsp;</div>
-                <div style="width: 50%; padding: 0;">
-                    <div class="historyItem__dates">2014 - 2015</div>
-                    <div class="historyItem__lineRight">
-                        <div class="historyItem__icon" style="line-height:41px;"><i class="fa fa-desktop"></i></div>
-                    </div>
-                    <div class="historyItem__position">Front end developer</div>
-                    <div class="historyItem__name">
-                        <a href="http://crystals.ru" target="_blank">Crystal Service</a>
-                    </div>
-                    <div class="historyItem__descr">
-                        <ul>
-                            <li>Agile development (Scrum)</li>
-                            <li>MVC framework based on Backbone.js</li>
-                            <li>Require.js modules</li>
-                            <li>Grunt</li>
-                            <li>BEM</li>
-                            <li>Tests: Jasmine, Mocha, Karma</li>
-                            <li>REST</li>
-                        </ul>
-                    </div>
+
+            <div class="historyItem">
+                <div class="historyItem__dates">2014 - 2015</div>
+                <div class="historyItem__lineRight">
+                    <div class="historyItem__icon" style="line-height:41px;"><i class="fa fa-desktop"></i></div>
+                </div>
+                <div class="historyItem__position">Front end developer</div>
+                <div class="historyItem__name">
+                    <a href="http://crystals.ru" target="_blank">Crystal Service</a>
+                </div>
+                <div class="historyItem__descr">
+                    <ul>
+                        <li>Agile development (Scrum)</li>
+                        <li>MVC framework based on Backbone.js</li>
+                        <li>Require.js modules</li>
+                        <li>Grunt</li>
+                        <li>BEM</li>
+                        <li>Tests: Jasmine, Mocha, Karma</li>
+                        <li>REST</li>
+                    </ul>
                 </div>
             </div>
-            <div class="historyItem row">
-                <div style="width: 50%;">&nbsp;</div>
-                <div style="width: 50%; padding: 0;">
-                    <div class="historyItem__dates">2010 - 2014</div>
-                    <div class="historyItem__lineRight">
-                        <div class="historyItem__icon" style="line-height:41px;"><i class="fa fa-desktop"></i></div>
-                    </div>
-                    <div class="historyItem__position">Front end developer</div>
-                    <div class="historyItem__name">
-                        <a href="http://crocotime.com" target="_blank">Infomaximum</a>
-                    </div>
-                    <div class="historyItem__descr">
-                        <ul>
-                            <li>MVC framework based on native JS</li>
-                            <li>Backbone.js</li>
-                            <li>Grunt</li>
-                            <li>LESS</li>
-                            <li>Responsive development</li>
-                            <li>REST</li>
-                            <li>Browser extensions development (Chrome, Firefox, Safari)</li>
-                            <li>PHP-scripting</li>
-                            <li>Some modules for C++ backend</li>
-                        </ul>
-                    </div>
+
+            <div class="historyItem">
+                <div class="historyItem__dates">2010 - 2014</div>
+                <div class="historyItem__lineRight">
+                    <div class="historyItem__icon" style="line-height:41px;"><i class="fa fa-desktop"></i></div>
+                </div>
+                <div class="historyItem__position">Front end developer</div>
+                <div class="historyItem__name">
+                    <a href="http://crocotime.com" target="_blank">Infomaximum</a>
+                </div>
+                <div class="historyItem__descr">
+                    <ul>
+                        <li>MVC framework based on native JS</li>
+                        <li>Backbone.js</li>
+                        <li>Grunt</li>
+                        <li>LESS</li>
+                        <li>Responsive development</li>
+                        <li>REST</li>
+                        <li>Browser extensions development (Chrome, Firefox, Safari)</li>
+                        <li>PHP-scripting</li>
+                        <li>Some modules for C++ backend</li>
+                    </ul>
                 </div>
             </div>
-            <div class="historyItem row">
-                <div style="width: 50%;">&nbsp;</div>
-                <div style="width: 50%; padding: 0;">
-                    <div class="historyItem__dates">2007 - 2012</div>
-                    <div class="historyItem__lineRight" style="line-height:38px;">
-                        <div class="historyItem__icon"><i class="fa fa-university"></i></div>
-                    </div>
-                    <div class="historyItem__position">Mathematics Degree</div>
-                    <div class="historyItem__name">Mordovian State University</div>
+
+            <div class="historyItem">
+                <div class="historyItem__dates">2007 - 2012</div>
+                <div class="historyItem__lineRight" style="line-height:38px;">
+                    <div class="historyItem__icon"><i class="fa fa-university"></i></div>
                 </div>
+                <div class="historyItem__position">Mathematics Degree</div>
+                <div class="historyItem__name">Mordovian State University</div>
             </div>
+
         </div>
     </div>
 
@@ -369,21 +406,31 @@
         </div>
 
         <div class="contacts__socialLinks">
-            <a class="contacts__socialLink">
+            <a class="contacts__socialLink" href="https://linkedin.com/profile/view?id=259835838" target="_blank">
                 <i class="fa fa-linkedin"></i>
             </a>
-            <a class="contacts__socialLink">
+            <a class="contacts__socialLink" href="https://github.com/denisraslov" target="_blank">
                 <i class="fa fa-github-alt"></i>
             </a>
-            <a class="contacts__socialLink">
+            <a class="contacts__socialLink" href="https://facebook.com/denis.raslov" target="_blank">
                 <i class="fa fa-facebook-f"></i>
             </a>
-            <a class="contacts__socialLink">
+            <a class="contacts__socialLink" href="https://vk.com/denis_raslov" target="_blank">
                 <i class="fa fa-vk"></i>
             </a>
-            <a class="contacts__socialLink">
+            <a class="contacts__socialLink" href="skype:denis_raslov" target="_blank">
                 <i class="fa fa-skype"></i>
             </a>
+        </div>
+
+        <div class="contacts__formWrap">
+            <div class="contacts__form">
+                <input type="text" name="name" placeholder="Name" />
+                <input type="text" name="email" placeholder="Email" />
+                <textarea name="message" placeholder="Message"></textarea>
+
+                <button class="button contants__sendMessage"><span>SEND</span> <i class="fa fa-paper-plane"></i></button>
+            </div>
         </div>
     </div>
 
