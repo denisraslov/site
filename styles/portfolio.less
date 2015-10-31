@@ -3,11 +3,13 @@
     padding: 40px 105px 80px;
 
     .project {
+        display: inline-block;
         transition: all 0.5s;
         text-align: center;
         border: 1px solid #ddd;
         padding-top: 30px;
-        height: 386px;
+        min-height: 386px;
+        max-width: 400px;
         background-color: #fff;
         cursor: pointer;
 
@@ -52,7 +54,41 @@
 
         .project__descr {
             font-size: 16px;
-            padding: 10px 20px 40px;
+            padding: 10px 40px 40px;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .portfolio {
+        .project {
+            padding-top: 10px;
+            margin-bottom: 20px;
+            height: auto;
+            width: 100%;
+            min-height: auto;
+            max-width: 100%;
+
+            .project__name {
+                font-size: 24px;
+                padding: 10px 0 0;
+            }
+
+            .project__descr {
+                font-size: 14px;
+                padding: 10px 20px 34px;
+            }
+
+            &:hover {
+
+                .project__name::after {
+                    width: 160px;
+                }
+
+                .project__name {
+                    font-size: 26px;
+                }
+            }
         }
     }
 }
@@ -69,78 +105,117 @@
   margin: 30px auto 0;
   border-radius: 3px;
   overflow-y: scroll;
+  max-width: 1400px;
+  max-height: 660px;
 
   .projectPopup__header {
       margin-bottom: 10px;
       margin-left: 23px;
 
       a {
-          display: inline-block;
-        color: inherit;
-        margin-top: -10px;
-        margin-left: 18px;
-        font-size: 17px;
-        vertical-align: middle;
-        transition: all 0.2s;
+            display: inline-block;
+            color: inherit;
+            margin-top: -10px;
+            margin-left: 18px;
+            font-size: 17px;
+            vertical-align: middle;
+            transition: all 0.2s;
 
-        .fa {
-            text-decoration: underline;
-            font-size: 14px;
+            .fa {
+                text-decoration: underline;
+                font-size: 14px;
+            }
+
+            &:hover {
+                color: #cc90ff !important;
+            }
         }
-
-        &:hover {
-            color: #cc90ff !important;
-        }
-      }
-
 
         .projectPopup__title {
             display: inline-block;
             color: #01a093;
             font-size: 36px;
         }
+    }
 
-        .projectPopup__screensWrap {
-            padding-top: 10px;
-            text-align: center;
+    .projectPopup__screensWrap {
+        padding-top: 10px;
+        text-align: center;
+    }
+
+    .popup__buttonLink {
+         padding: 4px 30px;
+         border-width: 2px;
+    }
+
+    .projectPopup__descr {
+        font-size: 16px;
+
+        ul {
+            margin: 10px 0 10px 20px;
         }
+    }
 
-        .popup__buttonLink {
-             padding: 4px 30px;
-             border-width: 2px;
+    .projectPopup__tags {
+        margin-top: 10px;
+
+        & > div {
+            display: inline-block;
+            font-size: 14px;
+            color: #fff;
+            border-radius: 2px;
+            background-color: #3c969d;
+            padding: 0px 8px;
+            margin-right: 4px;
+            margin-bottom: 2px;
         }
+    }
 
-        .projectPopup__descr {
-            font-size: 16px;
+    .projectPopup__respTitle {
+        margin: 30px 0 0 0;
+        font-size: 17px;
+        font-weight: bold;
+    }
+}
 
-            ul {
-                margin: 10px 0 10px 20px;
+@media (max-width: 1000px) {
+    .projectPopup {
+      padding: 25px 35px 25px 25px !important;
+      width: ~"calc(100% - 5px) !important";
+      height: ~"calc(100% - 5px) !important";
+
+      .projectPopup__header {
+          display: block;
+            font-size: 26px;
+            text-align: left;
+            margin-left: 0;
+
+            .projectPopup__title  {
+                font-size: 32px;
             }
-        }
 
-        .projectPopup__tags {
-            margin-top: 10px;
-
-            & > div {
-                display: inline-block;
-                font-size: 14px;
-                color: #fff;
-                border-radius: 2px;
-                background-color: #3c969d;
-                padding: 0px 8px;
-                margin-right: 4px;
-                margin-bottom: 2px;
+            a {
+                margin-left: 0;
+                font-size: 16px;
             }
-        }
-
-        .projectPopup__respTitle {
-            margin: 30px 0 0 0;
-            font-size: 17px;
-            font-weight: bold;
-        }
-
       }
-  }
+
+      .projectPopup__screensWrap {
+          display: none;
+      }
+
+      .projectPopup__descr {
+          font-size: 14px;
+          text-align: justify;
+      }
+
+      .projectPopup__tags > div {
+            font-size: 12px;
+            margin-bottom: 1px;
+            line-height: 26px;
+        }
+    }
+}
 
 .mfp-project {
     z-index: 10001 !important;

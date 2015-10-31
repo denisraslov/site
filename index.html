@@ -4,9 +4,7 @@
     <title>Denis Raslov | Front-end developer</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="vendor/animate.css">
@@ -34,22 +32,26 @@
 
     <div id="home" class="home section">
         <div class="home__sections">
-            <div class="home__leftSection">
-                <div class="animated">
-                    <div class="home__hi">Hi!</div>
 
-                    My name is Denis Raslov and I am front-end developer with 5+ years of professional experience, based in Saint Petersburg, Russia.<br><br>
-
-                    I develop modern, highly interactive, responsive websites & web apps with cutting edge technologies.<br><br>
-
-                    Front-end is my work and my hobby, I ♥ it.
-                </div>
-            </div>
             <div class="home__rightSection">
                 <div class="home__photoWrap animated">
                     <img src="https://pp.vk.me/c623919/v623919198/19ff4/NxgGP4mwjz8.jpg" class="home__photo" />
                 </div>
             </div>
+
+            <div class="home__leftSection">
+                <div class="animated">
+                    <div class="home__hi">Hi!</div>
+                    <div class="home__text">
+                        My name is Denis Raslov and I am front-end developer with 5+ years of professional experience, based in Saint Petersburg, Russia.
+                        <div class="home__textDelimiter"></div>
+                        I develop modern, highly interactive, responsive websites & web apps with cutting edge technologies.
+                        <div class="home__textDelimiter"></div>
+                        Front-end is my work and my hobby, I ♥ it.
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="home__footer">
@@ -130,7 +132,7 @@
 
         <div class="row">
 
-            <div style="width: 33%;">
+            <div style="width: 33%; text-align: right;">
                 <div href="#popup_crocotime" class="project open-popup-link">
 
                     <div class="project__img" style="background-image: url('img/projects/crocotime/logo.png');">
@@ -145,7 +147,7 @@
                 </div>
             </div>
 
-            <div style="width: 33%;">
+            <div style="width: 33%; text-align: center;">
                 <div href="#popup_neemble" class="project open-popup-link">
 
                     <div class="project__img" style="background-image: url('http://neemble.ru/dist/media/images/logo_black.png');">
@@ -154,13 +156,13 @@
                     <div class="project__name">Neemble</div>
 
                     <div class="project__descr">
-                        POS back office system prodives managing of menu, invoices, storehouses balance, employees, cashboxes and sales statistics.
+                        POS back office system prodives managing of business and sales statistics
                     </div>
 
                 </div>
             </div>
 
-            <div style="width: 33%;">
+            <div style="width: 33%; text-align: left;">
                 <div href="#popup_lastshow" class="project open-popup-link">
 
                     <div class="project__img" style="background-image: url('http://lastshow.net/img/logo.png');">
@@ -424,6 +426,11 @@
         </div>
 
         <div class="contacts__formWrap">
+
+            <div class="contacts__emailTip">
+                Write me below or to <a href="mailto:hi@raslov.pro" target="_blank">hi@raslov.pro</a>
+            </div>
+
             <div class="contacts__form">
                 <input type="text" name="name" placeholder="Name" />
                 <input type="text" name="email" placeholder="Email" />

@@ -6,7 +6,7 @@
     .history__items {
         position: relative;
         display: inline-block;
-        width: 700px;
+        width: 540px;
         text-align: left;
         border-left: 3px solid #41969c;
 
@@ -91,6 +91,46 @@
 
         li {
             line-height: 28px;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .history {
+        .history__items {
+            width: auto;
+        }
+
+        .historyItem__position {
+            font-size: 17px;
+            padding: 12px 20px 0;
+        }
+
+        .historyItem__name {
+            padding: 2px 20px 16px;
+        }
+
+        .historyItem__descr {
+            padding: 0 37px 10px;
+            font-size: 14px;
+        }
+
+        .historyItem__icon {
+            height: 34px;
+            width: 34px;
+            font-size: 16px;
+            line-height: 37px !important;
+            top: -18px !important;
+            right: -10px !important;
+        }
+
+        .historyItem:not(:last-child) {
+            margin-bottom: 30px;
+        }
+
+        .historyItem__dates {
+            font-size: 15px;
+            padding: 0 20px;
         }
     }
 }

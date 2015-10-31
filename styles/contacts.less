@@ -1,6 +1,6 @@
 
 .contacts {
-    padding: 30px 105px 50px;
+    padding: 18px 105px 30px;
 
     .contacts__socialLinks {
         text-align: center;
@@ -46,14 +46,23 @@
     }
 
     .contacts__formWrap {
-        margin-top: 60px;
+        margin-top: 40px;
         text-align: center;
         opacity: 0;
         transition: all 1.5s;
 
+        .contacts__emailTip {
+            margin-bottom: 26px;
+
+            a {
+                color: #41969c;
+            }
+        }
+
         .contacts__form {
             display: inline-block;
-            width: 600px;
+            max-width: 600px;
+            width: 100%;
 
             input, textarea {
                 display: block;
@@ -80,7 +89,45 @@
 
             .contants__sendMessage {
                 width: 200px;
-                margin-top: 20px;
+                margin-top: 13px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .contacts {
+        padding: 20px 10px !important;
+
+        .contacts__socialLink {
+            padding: 5px !important;
+            width: 40px !important;
+            height: 40px !important;
+            line-height: 30px !important;
+            font-size: 20px !important;
+        }
+
+        .contacts__socialLink:not(:first-child) {
+            margin-left: 3px !important;
+        }
+
+        .contacts__formWrap {
+            margin-top: 26px;
+
+            .contacts__emailTip {
+                margin-bottom: 14px;
+                font-size: 16px;
+            }
+
+            input, textarea {
+                margin-bottom: 10px !important;
+                padding: 6px 8px !important;
+                font-size: 14px !important;
+            }
+
+            .contants__sendMessage {
+                width: 130px !important;
+                margin-top: 8px !important;
             }
         }
     }

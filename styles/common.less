@@ -42,9 +42,26 @@ ul {
     text-align: center;
 }
 
+
+@media (max-width: 1000px) {
+    .header {
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 26px;
+    }
+}
+
 .title {
     font-size: 20px;
     line-height: 40px;
+}
+
+@media (max-width: 1000px) {
+    .title {
+        font-size: 17px;
+        line-height: 25px;
+        text-align: center;
+    }
 }
 
 .button {
@@ -73,6 +90,17 @@ ul {
     }
 }
 
+@media (max-width: 1000px) {
+    .button {
+        padding: 8px;
+        font-size: 12px;
+
+        .fa {
+            margin-left: 2px;
+        }
+    }
+}
+
 .row {
     margin: 0 -15px;
 }
@@ -90,9 +118,29 @@ ul {
     padding: 0 15px;
 }
 
+@media (max-width: 600px) {
+    .row {
+        margin: 0;
+    }
+
+    .row > div {
+        display: block;
+        width: 100% !important;
+        float: none;
+        padding: 0;
+    }
+}
+
 .section {
     min-height: 100%;
+    width: 100%;
     position: relative;
+}
+
+@media (max-width: 1000px) {
+    .section {
+        padding: 20px 30px !important;
+    }
 }
 
 .button_round {
@@ -122,9 +170,18 @@ ul {
     }
 }
 
+@media (max-width: 1000px) {
+    .button_round {
+        height: 54px;
+        width: 54px;
+        padding: 10px;
+    }
+}
+
 .button_to {
     right: 30px;
     bottom: 30px;
+    visibility: hidden;
 
     span {
         display: none;
@@ -132,6 +189,13 @@ ul {
         vertical-align: middle;
         font-size: 17px;
         margin-right: 6px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .button_to {
+        right: 14px !important;
+        bottom: 14px !important;
     }
 }
 

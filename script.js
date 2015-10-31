@@ -1,105 +1,121 @@
 $(document).ready(function() {
 
     var $homeMoreButton = $('.home__moreButton'),
-        $toButton = $('.button_to');
+        $toButton = $('.button_to'),
+        $menuButton = $('.button_menu'),
+        skipToButtonOnScroll;
 
-    var animate = function($el, animationClass, callback) {
-        animationClass = animationClass || 'animated bounce';
+    var offsets;
 
-        $el.addClass(animationClass);
+    //--------------------- methods --------------------------------
 
-        $el.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-            $el.removeClass(animationClass);
-            callback && callback($el);
-        });
+    var run = function() {
+        prepareOffsets();
+        checkScrollPosition();
+        $toButton.css('visibility', 'visible');
+        $('.home').addClass('visible');
+
+        bindHandlers();
+        bindProjectPopup();
+        bindMenuPopup();
     };
 
-    var skipToButtonOnScroll;
+    var prepareOffsets = function() {
+        offsets = {
+           skills: $('.skills').offset().top,
+           portfolio: $('.portfolio').offset().top,
+           history: $('.history').offset().top,
+           contacts: $('.contacts').offset().top
+       };
+   };
 
-    $('.menu__item').click(function(e) {
-        var sectionSelector = $(e.target).attr('href');
+    var bindHandlers = function() {
 
-        $.magnificPopup.close();
+        $('.menu__item').click(function(e) {
+            var sectionSelector = $(e.target).attr('href');
 
-        skipToButtonOnScroll = true;
+            $.magnificPopup.close();
 
-        if (sectionSelector == 'home') {
-            $toButton.hide();
-        }
-
-        $(sectionSelector).ScrollTo({
-            duration: 300,
-            easing: 'linear',
-            callback: function() {
-                if (sectionSelector != 'home') {
-                    $toButton.show();
-                }
-
-                skipToButtonOnScroll = false;
-            }
-        });
-
-        e.stopPropagation();
-    });
-
-    $homeMoreButton.click(function() {
-        $('.skills').ScrollTo({
-            duration: 300,
-            easing: 'linear'
-        });
-    });
-
-    $toButton.click(function() {
-        var buttonOffset;
-
-        if (!$toButton.data('up')) {
-
-            buttonOffset = $toButton.offset().top;
-
-            for (var section in offsets) {
-                if (buttonOffset <= offsets[section]) {
-
-                    if (section != 'contacts') {
-                        setTimeout(function() {
-                            animate($toButton);
-                        }, 100);
-                    }
-
-                    $('.' + section).ScrollTo({
-                        duration: 300,
-                        easing: 'linear'
-                    });
-
-                    break;
-                }
-            }
-
-            $('.' + section).ScrollTo({
-                duration: 300,
-                easing: 'linear'
-            });
-
-        } else {
             skipToButtonOnScroll = true;
-            $toButton.hide();
 
-            $('#home').ScrollTo({
+            if (sectionSelector == 'home') {
+                $toButton.hide();
+            }
+
+            $(sectionSelector).ScrollTo({
                 duration: 300,
                 easing: 'linear',
                 callback: function() {
+                    if (sectionSelector != 'home') {
+                        $toButton.show();
+                    }
+
                     skipToButtonOnScroll = false;
                 }
             });
-        }
-    });
 
-    $('.home').addClass('visible');
+            e.stopPropagation();
+        });
 
-    var offsets = {
-        skills: $('.skills').offset().top,
-        portfolio: $('.portfolio').offset().top,
-        history: $('.history').offset().top,
-        contacts: $('.contacts').offset().top
+        $homeMoreButton.click(function() {
+            $('.skills').ScrollTo({
+                duration: 300,
+                easing: 'linear'
+            });
+        });
+
+        $toButton.click(function() {
+            var buttonOffset;
+
+            if (!$toButton.data('up')) {
+
+                buttonOffset = $toButton.offset().top;
+
+                for (var section in offsets) {
+                    if (buttonOffset <= offsets[section]) {
+
+                        if (section != 'contacts') {
+                            setTimeout(function() {
+                                animate($toButton);
+                            }, 100);
+                        }
+
+                        $('.' + section).ScrollTo({
+                            duration: 300,
+                            easing: 'linear'
+                        });
+
+                        break;
+                    }
+                }
+
+                $('.' + section).ScrollTo({
+                    duration: 300,
+                    easing: 'linear'
+                });
+
+            } else {
+                skipToButtonOnScroll = true;
+                $toButton.hide();
+
+                $('#home').ScrollTo({
+                    duration: 300,
+                    easing: 'linear',
+                    callback: function() {
+                        skipToButtonOnScroll = false;
+                    }
+                });
+            }
+        });
+
+        $(document).on('scroll', function(e) {
+            checkScrollPosition();
+        });
+
+        $(window).on('resize', function(e) {
+            setMenuButtonPosition();
+            prepareOffsets();
+        });
     };
 
     var checkScrollPosition = function() {
@@ -143,7 +159,7 @@ $(document).ready(function() {
                         if (index == 0) {
                             setTimeout(function() {
                                 $contactsFormWrap.addClass('visible');
-                                $contactsFormWrap.find('input:first').focus();
+                                //$contactsFormWrap.find('input:first').focus();
                             }, 500);
                         }
                     };
@@ -181,100 +197,117 @@ $(document).ready(function() {
         }
     };
 
-    checkScrollPosition();
+    var bindProjectPopup = function() {
+        $('.open-popup-link').magnificPopup({
+              type: 'inline',
+              midClick: true,
+              mainClass: 'mfp-project',
+              removalDelay: 300,
+              callbacks: {
+                  beforeOpen: function() {
+                      $toButton.hide();
+                      $menuButton.hide();
+                  },
+                  open: function() {
+                      this.slider = $('.projectPopup__screens', this.content).bxSlider({
+                          mode: 'fade'
+                      });
 
-    $(document).on('scroll', function(e) {
-        checkScrollPosition();
-    });
+                      $toButton
+                          .show()
+                          .css('opacity', 0);
 
-    $('.open-popup-link').magnificPopup({
-          type: 'inline',
-          midClick: true,
-          mainClass: 'mfp-project',
-          removalDelay: 300,
-          callbacks: {
-              beforeOpen: function() {
-                  $toButton.hide();
-                  $('.button_menu').hide();
-              },
-              open: function() {
-                  this.slider = $('.projectPopup__screens', this.content).bxSlider({
-                      mode: 'fade'
-                  });
+                      $menuButton
+                          .show()
+                          .css('opacity', 0);
+                  },
+                  afterClose: function() {
+                      this.slider.destroySlider();
+                      $toButton.css('opacity', 1);
+                      $menuButton.css('opacity', 1);
+                  }
+             }
+        });
+    };
 
-                  $toButton
-                      .show()
-                      .css('opacity', 0);
+    var setMenuButtonPosition = function() {
+        var windowWidth = $(window).width();
 
-                  $('.button_menu')
-                      .show()
-                      .css('opacity', 0);
-              },
-              afterClose: function() {
-                  this.slider.destroySlider();
-                  $toButton.css('opacity', 1);
-                  $('.button_menu').css('opacity', 1);
-              }
-         }
-    });
+        $menuButton
+            .css('left', (windowWidth - (windowWidth > 1000 ? 94 : 70)) + 'px')
+            .css('visibility', 'visible');
+    }
 
-    var isMenuOpening = false;
-    var isMenuOpened = false;
+    var bindMenuPopup = function() {
+        var isMenuOpening = false;
+        var isMenuOpened = false;
 
-    $('.button_menu')
-        .css('left', ($(window).width() - 94) + 'px')
-        .css('visibility', 'visible');
+        setMenuButtonPosition();
 
-    $('.button_menu').magnificPopup({
-          type: 'inline',
-          midClick: true,
-          mainClass: 'mfp-menu',
-          removalDelay: 200,
-          showCloseBtn: false,
-          callbacks: {
-              beforeOpen: function() {
-                  $toButton.hide();
+        $menuButton.magnificPopup({
+              type: 'inline',
+              midClick: true,
+              mainClass: 'mfp-menu',
+              removalDelay: 200,
+              showCloseBtn: false,
+              callbacks: {
+                  beforeOpen: function() {
+                      $toButton.hide();
 
-                  animate($('.button_menu'), 'animated-roll');
+                      animate($menuButton, 'animated-roll');
 
-                  $('.button_menu .fa')
-                    .removeClass('fa-bars')
-                    .addClass('fa-times');
+                      $menuButton.find('.fa')
+                        .removeClass('fa-bars')
+                        .addClass('fa-times');
 
-                    $('.button_menu').addClass('button_menuClose');
-              },
-              open: function() {
-                 isMenuOpening = true;
-                 isMenuOpened = true;
+                        $menuButton.addClass('button_menuClose');
+                  },
+                  open: function() {
+                     isMenuOpening = true;
+                     isMenuOpened = true;
 
-                $toButton
-                    .show()
-                    .css('opacity', 0);
-              },
-              beforeClose: function() {
-                  animate($('.button_menu'), 'animated-roll');
+                    $toButton
+                        .show()
+                        .css('opacity', 0);
+                  },
+                  beforeClose: function() {
+                      animate($menuButton, 'animated-roll');
 
-                  $('.button_menu').removeClass('button_menuClose');
+                     $menuButton.removeClass('button_menuClose');
 
-                  $('.button_menu .fa')
-                    .removeClass('fa-times')
-                    .addClass('fa-bars');
-              },
-              afterClose: function() {
-                  isMenuOpened = false;
+                      $menuButton.find('.fa')
+                        .removeClass('fa-times')
+                        .addClass('fa-bars');
+                  },
+                  afterClose: function() {
+                      isMenuOpened = false;
 
-                  $toButton.css('opacity', 1);
-              }
-         }
-    });
+                      $toButton.css('opacity', 1);
+                  }
+             }
+        });
 
-    $('.button_menu').click(function() {
-        if (isMenuOpened) {
-             if (isMenuOpening) {
-                 isMenuOpening = false;
-             } else {
-                 $.magnificPopup.close();
+        $menuButton.click(function() {
+            if (isMenuOpened) {
+                 if (isMenuOpening) {
+                     isMenuOpening = false;
+                 } else {
+                     $.magnificPopup.close();
+                }
             }
-        }
-    });
+        });
+    }
+
+    var animate = function($el, animationClass, callback) {
+        animationClass = animationClass || 'animated bounce';
+
+        $el.addClass(animationClass);
+
+        $el.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+            $el.removeClass(animationClass);
+            callback && callback($el);
+        });
+    };
+
+    run();
 });

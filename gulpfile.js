@@ -10,15 +10,15 @@ var path = require('path');
 
 gulp.task('less', function() {
     gulp
-        .src('./less/*.less')
+        .src('./styles/*.less')
         .pipe(concat('./styles.css'))
         .pipe(less({
             paths: [ path.join(__dirname, 'less', 'includes') ]
         }))
-        .pipe(importCss())
+        //.pipe(importCss())
         .pipe(stripCssComments())
         .pipe(minifyCss())
-        .pipe(gulp.dest('./less/'));
+        .pipe(gulp.dest('./styles/'));
 });
 
 gulp.task('watch', function () {
