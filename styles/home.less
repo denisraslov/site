@@ -1,6 +1,8 @@
 
 .home {
     padding: 90px 105px;
+    background-image: url("../img/home.jpg");
+    background-size: 100%;
 
     .animated {
         opacity: 0;
@@ -13,8 +15,14 @@
         margin-bottom: 0;
     }
 
+    .section__cell {
+        text-align: center;
+    }
+
     .home__sections {
         overflow: hidden;
+        display: inline-block;
+        width: 80%;
     }
 
     .home__leftSection,
@@ -23,37 +31,44 @@
     }
 
     .home__leftSection {
-        width: 60%;
+        width: 70%;
+        text-align: left;
     }
 
     .home__rightSection {
-        width: 40%;
-        float: right;
+        width: 30%;
+        float: left;
         text-align: center;
 
         .home__photoWrap {
             position: relative;
             display: inline-block;
-            width: 230px;
-            height: 230px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             overflow: hidden;
             margin-top: 63px;
+            border: 2px solid #aaa;
 
             img {
                 position: absolute;
-                top: -23px;
-                left: -4px;
+                top: -29px;
+                left: -28px;
                 width: 253px;
             }
         }
     }
 
     .home__hi {
-        font-size: 108px;
-        line-height: 108px;
-        color: rgb(1, 160, 147);
+        font-size: 80px;
+        font-weight: bold;
+        line-height: 80px;
+        color: #fff;
         margin-bottom: 20px;
+    }
+
+    .home__text {
+        color: #fff;
     }
 
     .home__textDelimiter {
@@ -65,6 +80,7 @@
 
         .home__moreButton {
             margin-top: 80px;
+            background-color: transparent;
         }
     }
 }
@@ -87,6 +103,8 @@
 
 @media (max-width: 1000px) {
     .home {
+        background-size: auto;
+
         .home__leftSection,
         .home__rightSection {
             display: block;
