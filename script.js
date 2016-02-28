@@ -31,6 +31,10 @@ $(document).ready(function() {
 
     var bindHandlers = function() {
 
+        $('input, textarea').focus(function(e) {
+            $(e.target).removeClass('input_error');
+        });
+
         $('.menu__item').click(function(e) {
             var sectionSelector = $(e.target).attr('href');
 
@@ -106,6 +110,24 @@ $(document).ready(function() {
                     }
                 });
             }
+        });
+
+        $('.contants__sendMessage').click(function() {
+            sendMail();
+        });
+
+        $('.contacts__writeAgain').click(function() {
+            var $contactsFormWrap = $('.contacts__formWrap');
+
+            $('.contacts__successEmailMessage')
+                .css('visibility', 'hidden')
+                .removeClass('visible');
+
+            $('.contacts__successEmailMessageText').removeClass('visible');
+
+            $contactsFormWrap.css('height', 'auto');
+            $contactsFormWrap.children().show();
+            $contactsFormWrap.addClass('visible');
         });
 
         $(document).on('scroll', function(e) {
@@ -307,6 +329,63 @@ $(document).ready(function() {
             $el.removeClass(animationClass);
             callback && callback($el);
         });
+    };
+
+    var sendMail = function()
+    {
+        var $contactsFormWrap = $('.contacts__formWrap'),
+            $contactsForm = $('.contacts__form'),
+            $nameInput = $contactsForm.find('input[name="name"]'),
+            $emailInput = $contactsForm.find('input[name="email"]'),
+            $messageTextarea = $contactsForm.find('textarea[name="message"]'),
+            message;
+
+        if ($nameInput.val() && $emailInput.val() && $messageTextarea.val()) {
+
+            message = $nameInput.val() + ' - ' + $emailInput.val() + ' - ' + $messageTextarea.val();
+
+            $nameInput.attr('disabled', 'true');
+            $emailInput.attr('disabled', 'true');
+            $messageTextarea.attr('disabled', 'true');
+
+            $.ajax({
+                url: 'mail.php',
+                type: 'POST',
+                data: {
+                    message: message
+                },
+                success: function() {
+                    $contactsFormWrap.height($contactsFormWrap.height());
+                    $contactsFormWrap.children().hide();
+                    $contactsFormWrap.removeClass('visible');
+
+                    $('.contacts__successEmailMessage')
+                        .css('visibility', 'visible')
+                        .addClass('visible')
+                        .one('webkitTransitionEnd mozTransitionEnd MSTransitionEnd otransitionend transitionend', function() {
+                            $('.contacts__successEmailMessageText').addClass('visible');
+                        });
+
+                    $nameInput.removeAttr('disabled');
+                    $emailInput.removeAttr('disabled');
+                    $messageTextarea.removeAttr('disabled');
+
+                    $nameInput.val('');
+                    $emailInput.val('');
+                    $messageTextarea.val('');
+                }
+            });
+        } else {
+            if (!$nameInput.val()) {
+                $nameInput.addClass('input_error');
+            }
+            if (!$emailInput.val()) {
+                $emailInput.addClass('input_error');
+            }
+            if (!$messageTextarea.val()) {
+                $messageTextarea.addClass('input_error');
+            }
+        }
     };
 
     run();

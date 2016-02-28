@@ -2,6 +2,12 @@
 .contacts {
     padding: 18px 105px 30px;
 
+    a {
+        color: #41969c;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
     .contacts__socialLinks {
         text-align: center;
         position: relative;
@@ -45,21 +51,52 @@
         opacity: 1;
     }
 
+    .contacts__successEmailMessage {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 140px;
+        visibility: hidden;
+        z-index: 3;
+
+        .contacts__successEmailMessageText {
+            transition: opacity 1s;
+            opacity: 0;
+            margin-top: 115px;
+
+            &.visible {
+                opacity: 1;
+            }
+        }
+
+        .fa {
+            font-size: 100px;
+            color: #41969c;
+            transition: transform 1s;
+            transform: scale(0.3);
+        }
+
+        &.visible {
+            .fa {
+                transform: scale(2.5);
+            }
+        }
+    }
+
     .contacts__formWrap {
         margin-top: 40px;
         text-align: center;
         opacity: 0;
-        transition: all 1.5s;
+        transition: opacity 1.5s;
+        position: relative;
 
         .contacts__emailTip {
+            z-index: 1;
             margin-bottom: 26px;
-
-            a {
-                color: #41969c;
-            }
         }
 
         .contacts__form {
+            z-index: 1;
             display: inline-block;
             max-width: 600px;
             width: 100%;
