@@ -18,6 +18,8 @@ $(document).ready(function() {
         bindHandlers();
         bindProjectPopup();
         bindMenuPopup();
+
+        bindLoader();
     };
 
     var prepareOffsets = function() {
@@ -28,6 +30,12 @@ $(document).ready(function() {
            contacts: $('.contacts').offset().top
        };
    };
+
+    var bindLoader = function() {
+        $('.home').waitForImages(function() {
+            $('.loader').remove();
+        });
+    };
 
     var bindHandlers = function() {
 
