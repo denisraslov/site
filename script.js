@@ -33,7 +33,8 @@ $(document).ready(function() {
 
     var bindLoader = function() {
         $('.home').waitForImages(function() {
-            $('.loader').remove();
+            $('.loaderWrap').remove();
+            $('body').css('overflow', 'visible');
         });
     };
 
